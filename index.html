@@ -1,0 +1,422 @@
+<div class="calculator-wrapper">
+  <div class="header step-2 step-3 hide">
+    <p class="header__title">Þú skapar íslenska samfélagið</p>
+    <p class="header__lead">Together with its employees, Jökulá creates tax revenues of SEK 5,716,286. sem að samsvara:</p>
+  </div>
+  <form class="form step-1">
+    <div class="form__elem">
+      <label for="company" class="form__elem__label">Nafn á fyrirtæki</label>
+      <input type="text" id="company" name="company" class="form__elem__input">
+    </div>
+    <div class="form__elem">
+      <label for="employees" class="form__elem__label">Fjöldi starfsmanna hjá þínu fyrirtæki</label>
+      <p class="form__elem__output" id="employees-output"></p>
+      <!-- <input type="range" id="employees" name="employees" class="form__elem__range"> -->
+      <div id="employees" class="form__elem__range"></div>
+    </div>
+    <div class="form__elem">
+      <label for="salaries" class="form__elem__label">Samtals laun og launatengd gjöld á ári</label>
+      <p class="form__elem__output" id="salaries-output"></p>
+      <p class="form__elem__output currency">kr.</p>
+      <!-- <input type="range" id="salaries" name="salaries" class="form__elem__range"> -->
+      <div id="salaries" class="form__elem__range"></div>
+    </div>
+    <div class="form__elem">
+      <label for="tax" class="form__elem__label">Tekjuskattur á ári</label>
+      <p class="form__elem__output" id="tax-output"></p>
+      <p class="form__elem__output currency">kr.</p>
+      <!-- <input type="range" id="tax" name="tax" class="form__elem__range"> -->
+      <div id="tax" class="form__elem__range"></div>
+    </div>
+  </form>
+  <div class="total">
+    <p class="total__title step-1">Fyrirtækið þitt skapar:</p>
+    <div class="total__result-info">
+      <div class="total__result-info__block">
+        <p class="total__result-info__number" id="totalKindergarden"></p>
+        <p class="total__result-info__title">Pláss á leikskóla</p>
+      </div>
+      <div class="total__result-info__block">
+        <p class="total__result-info__number" id="totalPolice"></p>
+        <p class="total__result-info__title">Lögregluþjóna</p>
+      </div>
+      <div class="total__result-info__block">
+        <p class="total__result-info__number" id="totalNurse"></p>
+        <p class="total__result-info__title">Hjúkrunafræðinga</p>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+    <div class="footer__main-text-wrapper step-2 step-3 hide">
+      <p class="footer__main-text-wrapper--first">It is important that more people understand Jökulá's significance for welfare. We all benefit from the fact that things are going well for companies in Sweden.</p>
+      <p class="footer__main-text-wrapper--second">Companies, welfare creators, make a difference.</p>
+    </div>
+    <form class="footer__form-wrapper step-2 hide">
+      <div class="footer__form-elem">
+        <label for="company" class="footer__form__label">Fáðu sendar myndir af niðurstöðum til að deila með öðrum</label>
+        <input type="text" id="company" name="company" class="footer__form__input" placeholder="Settu inn netfangið þitt">
+      </div>
+    </form>
+    <div class="footer__success-message step-3 hide">
+      <p>Takk fyrir! Þú færð sendann tölvupóst</p>
+    </div>
+    <div class="footer__buttons">
+      <button onclick="nextStep()" class="footer__buttons--next-step">Næsta skref</button>
+      <div class="footer__buttons--indicator active"></div>
+      <div class="footer__buttons--indicator"></div>
+    </div>
+  </div>
+</div>
+<link rel="stylesheet" type="text/css" href="./nouislider.css">
+<style>
+  .calculator-wrapper {
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    max-width: 664px;
+  }
+  .header {
+    padding: 64px 47px 0;
+  }
+  .header__title {
+    font-family: Blacker Display;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 45px;
+    line-height: 125.5%;
+    color: #0C120C;
+    margin: 0;
+  }
+  .header__lead {
+    font-family: Circular Std;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 170%;
+    color: #0C120C;
+    margin-top: 25px;
+    margin: 0;
+  }
+  .form {
+    margin: 42px 47px 0 47px;
+    border-bottom: 1px solid #EEECE7;
+    padding-bottom: 53px;
+    flex-direction: column;
+  }
+  .form__elem {
+    display: flex;
+    margin-bottom: 49px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  .form__elem:last-child {
+    margin-bottom: 0;
+  }
+  .form__elem__label {
+    margin-bottom: 28px;
+    margin-right: auto; 
+    font-family: Circular Std;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 170%;
+    color: #08262A;
+  }
+  .form__elem__input {
+    border: 1px solid #EEECE7;
+    box-sizing: border-box;
+    height: 58px;
+    width: 100%;
+    padding-left: 16px;
+    font-size: 16px;
+    font-family: Circular Std;
+    font-style: normal;
+  }
+  .form__elem__input::placeholder {
+    color: #999;
+    opacity: 1;
+  }
+  .form__elem__range {
+    width: 100%;
+    background: #EEECE7;
+    height: 3px;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+  }
+  .form__elem__output {
+    margin: 0;
+    font-family: Blacker Display;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 25px;
+    line-height: 170%;
+    color: #B85B24;
+  }
+  .form__elem__output.currency {
+    margin-left: 6px;
+  }
+  .total {
+    padding: 0 47px 45px 47px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 33px;
+  }
+  .total__title {
+    font-family: Circular Std;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 170%;
+    color: #08262A;
+    margin: 0;
+    margin-bottom: 27px;
+  }
+  .total__result-info {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 43px;
+  }
+  .total__result-info__block {
+    border: 1px solid #EEECE7;
+    box-sizing: border-box;
+    width: 181px;
+    height: 145px;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+  }
+  .total__result-info__number {
+    font-family: Circular Std;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 60px;
+    line-height: 99%;
+    text-align: center;
+    color: #08262A;
+    margin: 0;
+    margin-bottom: 10px;
+  }
+  .total__result-info__title {
+    font-family: Circular Std;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 170%;
+    text-align: center;
+    color: #B85B24;
+    margin: 0;
+  }
+  .footer {
+    margin: 0 47px 42px;
+  }
+  .footer__buttons {
+    display: flex;
+    align-items: center;
+  }
+  .footer__buttons--next-step {
+    margin-right: auto;
+    width: 200px;
+    height: 50px;
+    background: #B85B24;
+    font-family: Circular Std;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 20px;
+    text-align: center;
+    color: #FFFFFF;
+    border: 0;
+    cursor: pointer;
+  }
+  .footer__buttons--indicator {
+    border-radius: 50%;
+    background: #F3F3F3;
+    width: 10px;
+    height: 10px;
+    margin-left: 9px;
+    cursor: pointer;
+  }
+  .footer__buttons--indicator.active {
+    background: #264C51;
+  }
+  .footer__main-text-wrapper {
+    margin-bottom: 60px;
+  }
+  .footer__main-text-wrapper--first,
+  .footer__main-text-wrapper--second {
+    font-family: Circular Std;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 170%;
+    color: #0C120C;
+    margin: 0;
+  }
+  .footer__main-text-wrapper--second {
+    margin: 0;
+    margin-top: 25px;
+  }
+  .footer__form-elem {
+    display: flex;
+    flex-direction: column;
+  }
+  .footer__form__label {
+    font-family: Circular Std;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 170%;
+    color: #08262A;
+  }
+  .footer__form__input {
+    margin-top: 23px;
+    border: 1px solid #EEECE7;
+    box-sizing: border-box;
+    height: 58px;
+    padding-left: 16px;
+    margin-bottom: 49px;
+  }
+  .footer__form__input::placeholder {
+    color: #999;
+    opacity: 1;
+  }
+  .footer__success-message {
+    padding-top: 50px;
+    padding-bottom: 80px;
+    font-family: Circular Std;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 170%;
+    color: #08262A;
+  }
+  .hide {
+    display: none;
+  }
+  .noUi-touch-area {
+    width: 19px;
+    height: 19px;
+    background: #08262A;
+    border-radius: 50%;
+  }  
+</style>
+
+<script src="./nouislider.js"></script> 
+<script>
+  // Functionality for steps
+  var step1Elements = document.getElementsByClassName('step-1');
+  var step2Elements = document.getElementsByClassName('step-2');
+  var step3Elements = document.getElementsByClassName('step-3');
+
+  var nextButton = document.querySelector('.footer__buttons--next-step');
+  var stepIndicators = document.getElementsByClassName('footer__buttons--indicator');
+
+  var step = 1;
+
+  function nextStep(stepIndicatorValue) {
+    if (step === 1) {
+      for (var elem of step2Elements) {
+        elem.classList.remove('hide');
+      }
+      for (var elem of step1Elements) {
+        elem.classList.add('hide');
+      }
+      nextButton.innerHTML = 'Senda niðurstöður';
+      stepIndicators[0].classList.remove('active');
+      stepIndicators[1].classList.add('active');
+      step = 2;
+    } else if (step === 2) {
+      for (var elem of step2Elements) {
+        elem.classList.add('hide');
+      }
+      for (var elem of step3Elements) {
+        elem.classList.remove('hide');
+      }
+    }
+  }
+
+  // Functionality for sliders
+  var lockedState = true;
+  var lockedSlider = false;
+
+  var costBabyInKindergardenYear = 2289258;
+  var costPoliceOfficierYear = 12427622;
+  var costNurseYear = 12923192;
+
+  var slider1 = document.getElementById('employees');
+  var slider2 = document.getElementById('salaries');
+  var slider3 = document.getElementById('tax');
+
+  var slider1Value = document.getElementById('employees-output');
+  var slider2Value = document.getElementById('salaries-output');
+  var slider3Value = document.getElementById('tax-output');
+
+  function crossUpdate(value, slider) {
+    if (slider3 === slider) {
+      slider3.noUiSlider.set((value * 450958.8).toFixed(2));
+    }
+  }
+
+  function updateTotalValues() {
+    var totalTaxes = Number(slider2Value.innerText) * 0.33 + Number(slider3Value.innerText);
+    var totalKindergarden = totalTaxes / costBabyInKindergardenYear;
+    var totalPolice = totalTaxes / costPoliceOfficierYear;
+    var totalNurse = totalTaxes / costNurseYear;
+    // Set total cost of having a baby at the kindegarden for a year
+    document.getElementById('totalKindergarden').innerHTML = Math.floor(totalKindergarden * 10) / 10;
+    // Set total cost of having a police officier for a year
+    document.getElementById('totalPolice').innerHTML = Math.floor(totalPolice * 10) / 10;
+    // Set total cost of having a nurse for a year
+    document.getElementById('totalNurse').innerHTML = Math.floor(totalNurse * 10) / 10;
+  }
+
+  noUiSlider.create(slider1, {
+    start: 12,
+    step: 1,
+    connect: [true, false],
+    animate: false,
+    range: {
+      min: 1,
+      max: 399
+    },
+  });
+  noUiSlider.create(slider2, {
+    start: 80000000,
+    animate: false,
+    connect: [true, false],
+    range: {
+      min: 100000,
+      max: 150000000
+    }
+  });
+  noUiSlider.create(slider3, {
+    start: 5411506,
+    animate: false,
+    connect: [true, false],
+    range: {
+      min: 10000,
+      max: 67162000
+    }
+  });
+
+  slider1.noUiSlider.on('update', function (values, handle) {
+    slider1Value.innerHTML = Math.trunc(values[handle]);
+  });
+
+  slider2.noUiSlider.on('update', function (values, handle) {
+    slider2Value.innerHTML = values[handle];
+  });
+
+  slider3.noUiSlider.on('update', function (values, handle) {
+    slider3Value.innerHTML = values[handle];
+  });
+
+  slider1.noUiSlider.on('slide', function (values, handle) {
+    crossUpdate(values[handle], slider3);
+  });
+
+  slider2.noUiSlider.on('update', updateTotalValues);
+  slider3.noUiSlider.on('update', updateTotalValues);
+
+</script>
