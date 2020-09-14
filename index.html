@@ -1,7 +1,7 @@
 <div class="calculator-wrapper">
   <div class="header step-2 step-3 hide">
     <p class="header__title">Þú skapar íslenska samfélagið</p>
-    <p class="header__lead">Together with its employees, Jökulá creates tax revenues of SEK 5,716,286. sem að samsvara:</p>
+    <p class="header__lead">Together with its employees, <span id="company-name"></span> creates tax revenues of SEK <span id="total-taxes"></span>. sem að samsvara:</p>
   </div>
   <form class="form step-1">
     <div class="form__elem">
@@ -29,6 +29,7 @@
       <div id="tax" class="form__elem__range"></div>
     </div>
   </form>
+
   <div class="total">
     <p class="total__title step-1">Fyrirtækið þitt skapar:</p>
     <div class="total__result-info">
@@ -48,13 +49,14 @@
   </div>
   <div class="footer">
     <div class="footer__main-text-wrapper step-2 step-3 hide">
-      <p class="footer__main-text-wrapper--first">It is important that more people understand Jökulá's significance for welfare. We all benefit from the fact that things are going well for companies in Sweden.</p>
+      <p class="footer__main-text-wrapper--first">It is important that more people understand <span id="company-name"></span>'s significance for welfare. We all benefit from the fact that things are going well for companies in Sweden.</p>
       <p class="footer__main-text-wrapper--second">Companies, welfare creators, make a difference.</p>
     </div>
-    <form class="footer__form-wrapper step-2 hide">
+    <form action="/" class="footer__form-wrapper step-2 hide">
       <div class="footer__form-elem">
-        <label for="company" class="footer__form__label">Fáðu sendar myndir af niðurstöðum til að deila með öðrum</label>
-        <input type="text" id="company" name="company" class="footer__form__input" placeholder="Settu inn netfangið þitt">
+        <label for="email" class="footer__form__label">Fáðu sendar myndir af niðurstöðum til að deila með öðrum</label>
+        <input type="email" id="email" name="email" class="footer__form__input" placeholder="Settu inn netfangið þitt">
+        <input onclick="nextStep()" type="submit" value="Senda niðurstöður" class="footer__form__submit-button">
       </div>
     </form>
     <div class="footer__success-message step-3 hide">
@@ -62,18 +64,21 @@
     </div>
     <div class="footer__buttons">
       <button onclick="nextStep()" class="footer__buttons--next-step">Næsta skref</button>
-      <div class="footer__buttons--indicator active"></div>
-      <div class="footer__buttons--indicator"></div>
+      <div class="footer__buttons--indicator first-circle active"></div>
+      <div class="footer__buttons--indicator second-circle"></div>
     </div>
   </div>
 </div>
+
+
+
 <link rel="stylesheet" type="text/css" href="./nouislider.css">
 <style>
   .calculator-wrapper {
     background-color: #fff;
     display: flex;
     flex-direction: column;
-    max-width: 664px;
+    min-width: 664px;
   }
   .header {
     padding: 64px 47px 0;
@@ -86,6 +91,7 @@
     line-height: 125.5%;
     color: #0C120C;
     margin: 0;
+    margin-bottom: 25px;
   }
   .header__lead {
     font-family: Circular Std;
@@ -99,9 +105,17 @@
   }
   .form {
     margin: 42px 47px 0 47px;
-    border-bottom: 1px solid #EEECE7;
     padding-bottom: 53px;
     flex-direction: column;
+  }
+  .form::after {
+    content: '';
+    height: 2px;
+    background-color:#EEECE7;
+    position: absolute;
+    left: 0;
+    width: 100vw;
+    margin-top: 53px;
   }
   .form__elem {
     display: flex;
@@ -113,6 +127,8 @@
     margin-bottom: 0;
   }
   .form__elem__label {
+    display: flex;
+    align-items: center;
     margin-bottom: 28px;
     margin-right: auto; 
     font-family: Circular Std;
@@ -144,6 +160,8 @@
     transition: opacity .2s;
   }
   .form__elem__output {
+    display: flex;
+    align-items: center;
     margin: 0;
     font-family: Blacker Display;
     font-style: normal;
@@ -209,10 +227,12 @@
   }
   .footer {
     margin: 0 47px 42px;
+    position: relative;
   }
   .footer__buttons {
     display: flex;
     align-items: center;
+    margin-bottom: 18px;
   }
   .footer__buttons--next-step {
     margin-right: auto;
@@ -235,7 +255,9 @@
     width: 10px;
     height: 10px;
     margin-left: 9px;
-    cursor: pointer;
+  }
+  .footer__buttons--indicator.first-circle {
+    margin-left: auto;
   }
   .footer__buttons--indicator.active {
     background: #264C51;
@@ -275,11 +297,28 @@
     box-sizing: border-box;
     height: 58px;
     padding-left: 16px;
-    margin-bottom: 49px;
+    margin-bottom: 70px;
   }
   .footer__form__input::placeholder {
     color: #999;
     opacity: 1;
+  }
+  .footer__form__submit-button {
+    position: absolute;
+    bottom: 0;
+    margin-right: auto;
+    width: 200px;
+    height: 50px;
+    background: #B85B24;
+    font-family: Circular Std;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 20px;
+    text-align: center;
+    color: #FFFFFF;
+    border: 0;
+    cursor: pointer;
   }
   .footer__success-message {
     padding-top: 50px;
@@ -294,12 +333,95 @@
   .hide {
     display: none;
   }
+  #company-name {
+    font-weight: 700;
+  }
   .noUi-touch-area {
     width: 19px;
     height: 19px;
     background: #08262A;
     border-radius: 50%;
   }  
+  @media only screen and (max-width: 663px) {
+    .calculator-wrapper {
+      width: 100%;
+      min-width: auto;
+    }
+    .header {
+      padding: 41px 20px 0;
+    }
+    .header__title {
+      font-size: 30px;
+      margin-bottom: 34px;
+    }
+    .form {
+      margin: 42px 20px 0 20px;
+    }
+    .form__elem {
+      margin-bottom: 41px;
+    }
+    .form__elem__label {
+      max-width: 152px;
+      width: 100%;
+      font-size: 15px;
+    }
+    .form__elem__output {
+      font-size: 22px;
+      margin-bottom: 28px;
+    }
+    .total {
+      padding: 0 20px;
+    }
+    .total__result-info {
+      flex-wrap: wrap;
+      margin-bottom: 15px;
+    }
+    .total__result-info__block {
+      height: 71px;
+      flex-direction: row;
+      width: 100%;
+      align-items: center;
+      justify-content: space-around;
+      margin-bottom: 7px;
+    }
+    .total__result-info__number {
+      margin-bottom: 0;
+    }
+    .footer {
+      margin: 0 20px 42px;
+    }
+    .footer__main-text-wrapper {
+      margin-top: 27px;
+    }
+    .footer__buttons {
+      flex-wrap: wrap;
+      margin: 0;
+    }
+    .footer__buttons--next-step {
+      width: 100%;
+      order: 0;
+      margin-top: 15px;
+    }
+    .footer__buttons--indicator.first-circle {
+      order: -2
+    }
+    .footer__buttons--indicator.second-circle {
+      order: -1;
+      margin-right: auto;
+    }
+    .footer__form__input {
+      margin-bottom: 86px;
+    }
+    .footer__form__submit-button {
+      width: 100%;
+    }
+    .footer__buttons.step-2 {
+      position: absolute;
+      bottom: 65;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
 </style>
 
 <script src="./nouislider.js"></script> 
@@ -309,8 +431,11 @@
   var step2Elements = document.getElementsByClassName('step-2');
   var step3Elements = document.getElementsByClassName('step-3');
 
+  var totalTaxes = null;
+
   var nextButton = document.querySelector('.footer__buttons--next-step');
   var stepIndicators = document.getElementsByClassName('footer__buttons--indicator');
+  var footerButtons = document.querySelector('.footer__buttons');
 
   var step = 1;
 
@@ -322,9 +447,15 @@
       for (var elem of step1Elements) {
         elem.classList.add('hide');
       }
-      nextButton.innerHTML = 'Senda niðurstöður';
+      nextButton.classList.add('hide');
+
       stepIndicators[0].classList.remove('active');
       stepIndicators[1].classList.add('active');
+      footerButtons.classList.add('step-2');
+      document.querySelector('.total__result-info').style.marginBottom = 0;
+      document.querySelectorAll('#company-name').forEach(elem => elem.innerHTML = document.querySelector('#company').value);
+      document.querySelector('#total-taxes').innerHTML = totalTaxes.toLocaleString('en-EN');
+
       step = 2;
     } else if (step === 2) {
       for (var elem of step2Elements) {
@@ -359,7 +490,7 @@
   }
 
   function updateTotalValues() {
-    var totalTaxes = Number(slider2Value.innerText) * 0.33 + Number(slider3Value.innerText);
+    totalTaxes = Number(slider2Value.innerText) * 0.33 + Number(slider3Value.innerText);
     var totalKindergarden = totalTaxes / costBabyInKindergardenYear;
     var totalPolice = totalTaxes / costPoliceOfficierYear;
     var totalNurse = totalTaxes / costNurseYear;
