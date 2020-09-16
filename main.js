@@ -118,7 +118,7 @@ function updateTotalValues() {
 }
 
 noUiSlider.create(slider1, {
-  start: 12,
+  start: 50,
   step: 1,
   connect: [true, false],
   animate: false,
@@ -128,12 +128,12 @@ noUiSlider.create(slider1, {
   },
 });
 noUiSlider.create(slider2, {
-  start: 80000000,
+  start: 560000000,
   animate: false,
   connect: [true, false],
   range: {
     min: 100000,
-    max: 150000000
+    max: 1120000000
   }
 });
 noUiSlider.create(slider3, {
