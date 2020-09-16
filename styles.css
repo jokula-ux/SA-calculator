@@ -116,11 +116,12 @@
   margin: 0;
 }
 .form {
-  margin: 42px 47px 0 47px;
-  padding-bottom: 53px;
+  margin-top: 42px;
+  padding: 0 47px 53px;
   flex-direction: column;
+  border-bottom: 2px solid #EEECE7;
 }
-.form::after {
+/* .form::after {
   content: '';
   height: 2px;
   background-color:#EEECE7;
@@ -128,7 +129,7 @@
   left: 0;
   width: 100vw;
   margin-top: 53px;
-}
+} */
 .form__elem {
   display: flex;
   margin-bottom: 49px;

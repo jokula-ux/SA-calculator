@@ -109,7 +109,6 @@ function crossUpdate(value, slider) {
 function updateTotalValues() {
   totalTaxes = slider2ValueCount * 0.33 + slider3ValueCount;
   var totalKindergarden = totalTaxes / costBabyInKindergardenYear;
-  debugger;
   var totalPolice = totalTaxes / costPoliceOfficierYear;
   var totalNurse = totalTaxes / costNurseYear;
   // Set total cost of having a baby at the kindegarden for a year
