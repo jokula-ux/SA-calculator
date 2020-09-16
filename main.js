@@ -69,7 +69,7 @@ function nextStep(stepIndicatorValue) {
 
     document.querySelector('.total__result-info').style.marginBottom = 0;
     document.querySelectorAll('#company-name').forEach(elem => elem.innerHTML = document.querySelector('#company').value);
-    document.querySelectorAll('#total-taxes').forEach(elem => elem.innerHTML = totalTaxes.toLocaleString('en-EN'));   
+    document.querySelectorAll('#total-taxes').forEach(elem => elem.innerHTML = totalTaxes.toLocaleString('de-DE'));   
     step = 2;
     getCanvas();
   } else if (step === 2) {
@@ -97,6 +97,8 @@ var slider3 = document.getElementById('tax');
 var slider1Value = document.getElementById('employees-output');
 var slider2Value = document.getElementById('salaries-output');
 var slider3Value = document.getElementById('tax-output');
+var slider2ValueNumber = null;
+var slider3ValueNumber = null;
 
 function crossUpdate(value, slider) {
   if (slider3 === slider) {
@@ -105,16 +107,17 @@ function crossUpdate(value, slider) {
 }
 
 function updateTotalValues() {
-  totalTaxes = Number(slider2Value.innerText) * 0.33 + Number(slider3Value.innerText);
+  totalTaxes = slider2ValueCount * 0.33 + slider3ValueCount;
   var totalKindergarden = totalTaxes / costBabyInKindergardenYear;
+  debugger;
   var totalPolice = totalTaxes / costPoliceOfficierYear;
   var totalNurse = totalTaxes / costNurseYear;
   // Set total cost of having a baby at the kindegarden for a year
-  document.querySelectorAll('#totalKindergarden').forEach(elem => elem.innerHTML = Math.floor(totalKindergarden * 10) / 10);
+  document.querySelectorAll('#totalKindergarden').forEach(elem => elem.innerHTML = (Math.floor(totalKindergarden * 10) / 10).toLocaleString('de-DE'));
   // Set total cost of having a police officier for a year
-  document.querySelectorAll('#totalPolice').forEach(elem => elem.innerHTML = Math.floor(totalPolice * 10) / 10);
+  document.querySelectorAll('#totalPolice').forEach(elem => elem.innerHTML = (Math.floor(totalPolice * 10) / 10).toLocaleString('de-DE'));
   // Set total cost of having a nurse for a year
-  document.querySelectorAll('#totalNurse').forEach(elem => elem.innerHTML = Math.floor(totalNurse * 10) / 10);
+  document.querySelectorAll('#totalNurse').forEach(elem => elem.innerHTML = (Math.floor(totalNurse * 10) / 10).toLocaleString('de-DE'));
 }
 
 noUiSlider.create(slider1, {
@@ -129,6 +132,7 @@ noUiSlider.create(slider1, {
 });
 noUiSlider.create(slider2, {
   start: 560000000,
+  step: 1,
   animate: false,
   connect: [true, false],
   range: {
@@ -138,6 +142,7 @@ noUiSlider.create(slider2, {
 });
 noUiSlider.create(slider3, {
   start: 5411506,
+  step: 1,
   animate: false,
   connect: [true, false],
   range: {
@@ -151,11 +156,13 @@ slider1.noUiSlider.on('update', function (values, handle) {
 });
 
 slider2.noUiSlider.on('update', function (values, handle) {
-  slider2Value.innerHTML = values[handle];
+  slider2ValueCount = Number(values[handle]);
+  slider2Value.innerHTML = Number(values[handle]).toLocaleString('de-DE');
 });
 
 slider3.noUiSlider.on('update', function (values, handle) {
-  slider3Value.innerHTML = values[handle];
+  slider3ValueCount = Number(values[handle]);
+  slider3Value.innerHTML = Number(values[handle]).toLocaleString('de-DE');
 });
 
 slider1.noUiSlider.on('slide', function (values, handle) {
