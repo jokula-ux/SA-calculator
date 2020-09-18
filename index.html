@@ -1,13 +1,9 @@
 <div class="calculator-wrapper">
   <div class="header step-2 step-3 hide">
-    <p class="header__title">Þú skapar íslenska samfélagið</p>
-    <p class="header__lead">Together with its employees, <span id="company-name"></span> creates tax revenues of SEK <span id="total-taxes"></span> kr. sem að samsvara:</p>
+    <p class="header__title">Saman byggjum við íslenskt samfélag</p>
+    <p class="header__lead">Okkar fyrirtæki, <span id="company-name"></span> lagði til í fyrra <span id="total-taxes"></span> kr. til íslenskrar velferðar. Það samsvarar:</p>
   </div>
   <form class="form step-1">
-    <div class="form__elem">
-      <label for="company" class="form__elem__label">Nafn á fyrirtæki</label>
-      <input type="text" id="company" name="company" class="form__elem__input">
-    </div>
     <div class="form__elem">
       <label for="employees" class="form__elem__label">Fjöldi starfsmanna hjá þínu fyrirtæki</label>
       <p class="form__elem__output" id="employees-output"></p>
@@ -16,38 +12,42 @@
     <div class="form__elem">
       <label for="salaries" class="form__elem__label">Samtals laun og launatengd gjöld á ári</label>
       <p class="form__elem__output" id="salaries-output"></p>
-      <p class="form__elem__output currency">kr.</p>
+      <p class="form__elem__output currency">þ.kr.</p>
       <div id="salaries" class="form__elem__range"></div>
     </div>
     <div class="form__elem">
       <label for="tax" class="form__elem__label">Tekjuskattur á ári</label>
       <p class="form__elem__output" id="tax-output"></p>
-      <p class="form__elem__output currency">kr.</p>
+      <p class="form__elem__output currency">þ.kr.</p>
       <div id="tax" class="form__elem__range"></div>
     </div>
-  </form>
-
-  <div class="total">
-    <p class="total__title step-1">Fyrirtækið þitt skapar:</p>
-    <div class="total__result-info">
-      <div class="total__result-info__block">
-        <p class="total__result-info__number" id="totalKindergarden"></p>
-        <p class="total__result-info__title">Pláss á leikskóla</p>
-      </div>
-      <div class="total__result-info__block">
-        <p class="total__result-info__number" id="totalPolice"></p>
-        <p class="total__result-info__title">Lögregluþjóna</p>
-      </div>
-      <div class="total__result-info__block">
-        <p class="total__result-info__number" id="totalNurse"></p>
-        <p class="total__result-info__title">Hjúkrunafræðinga</p>
+    <div class="form__elem total">
+      <p class="total__title step-1">Fyrirtækið þitt skapar:</p>
+      <div class="total__result-info">
+        <div class="total__result-info__block">
+          <p class="total__result-info__number" id="totalKindergarden"></p>
+          <p class="total__result-info__title" id="totalKindergardenTitle">Leikskólapláss</p>
+        </div>
+        <div class="total__result-info__block">
+          <p class="total__result-info__number" id="totalPolice"></p>
+          <p class="total__result-info__title" id="totalPoliceTitle">Lögregluþjónar</p>
+        </div>
+        <div class="total__result-info__block">
+          <p class="total__result-info__number" id="totalNurse"></p>
+          <p class="total__result-info__title" id="totalNurseTitle">Hjúkrunarfræðingar</p>
+        </div>
       </div>
     </div>
-  </div>
+    <div class="form__elem">
+      <label for="company" class="form__elem__label">Nafn á fyrirtæki</label>
+      <input type="text" id="company" name="company" class="form__elem__input" required>
+    </div>
+  </form>
+  
   <div class="footer">
     <div class="footer__main-text-wrapper step-2 step-3 hide">
-      <p class="footer__main-text-wrapper--first">It is important that more people understand <span id="company-name"></span>'s significance for welfare. We all benefit from the fact that things are going well for companies in Sweden.</p>
-      <p class="footer__main-text-wrapper--second">Companies, welfare creators, make a difference.</p>
+      <p class="footer__main-text-wrapper--first">Það er mikilvægt að fleiri skilji mikilvægi atvinnulífsins og fyrirtækja í sköpun velferðar. Við njótum öll góðs af velgengni fyrirtækja á Íslandi.</p>
+      <p class="footer__main-text-wrapper--second">Atvinnulífið skiptir sköpum.</p>
     </div>
     <!-- <form action="/" class="footer__form-wrapper step-2 hide">
       <div class="footer__form-elem">
@@ -68,7 +68,7 @@
       </div>
     </div>
     <div class="footer__buttons">
-      <button onclick="nextStep()" class="footer__buttons--next-step">Næsta skref</button>
+      <button onclick="changeStep()" class="footer__buttons--change-step">Næsta skref</button>
       <div class="footer__buttons--indicator first-circle active"></div>
       <div class="footer__buttons--indicator second-circle"></div>
     </div>
@@ -90,14 +90,14 @@
       </svg>
     </div>
     <div class="info-block__title">
-      Við sköpum íslenskt samfélag
+      Saman byggjum við íslenskt samfélag
     </div>
     <div class="info-block__lead-text">
-      Samanlagt með starfsmönnum <span id="company-name"></span> höfum við borgað <span id="total-taxes"></span> kr. í skatta sem samsvara:
+      Okkar fyrirtæki lagði til í fyrra <span id="total-taxes"></span> kr. til íslenskrar velferðar. Það samsvarar:
     </div>
     <div class="info-block__result-info">
       <p class="info-block__result-info__number" id="totalKindergarden"></p>
-      <p class="info-block__result-info__title">Pláss á leikskóla</p>
+      <p class="info-block__result-info__title">leikskólaplássum</p>
     </div>
   </div>
   <div class="photo-block">
@@ -121,14 +121,14 @@
       </svg>
     </div>
     <div class="info-block__title">
-      Við sköpum íslenskt samfélag
+      Saman byggjum við íslenskt samfélag
     </div>
     <div class="info-block__lead-text">
-      Samanlagt með starfsmönnum <span id="company-name"></span> höfum við borgað <span id="total-taxes"></span> kr. í skatta sem samsvara:
+      Okkar fyrirtæki lagði til í fyrra <span id="total-taxes"></span> kr. til íslenskrar velferðar. Það samsvarar:
     </div>
     <div class="info-block__result-info">
       <p class="info-block__result-info__number" id="totalPolice"></p>
-      <p class="info-block__result-info__title">Störf lögregluþjóna</p>
+      <p class="info-block__result-info__title">lögregluþjónum</p>
     </div>
   </div>
   <div class="photo-block">
@@ -151,14 +151,14 @@
       </svg>
     </div>
     <div class="info-block__title">
-      Við sköpum íslenskt samfélag
+      Saman byggjum við íslenskt samfélag
     </div>
     <div class="info-block__lead-text">
-      Samanlagt með starfsmönnum <span id="company-name"></span> höfum við borgað <span id="total-taxes"></span> kr. í skatta sem samsvara:
+      Okkar fyrirtæki lagði til í fyrra <span id="total-taxes"></span> kr. til íslenskrar velferðar. Það samsvarar:
     </div>
     <div class="info-block__result-info">
       <p class="info-block__result-info__number" id="totalNurse"></p>
-      <p class="info-block__result-info__title">Störf hjúkrunarfræðinga</p>
+      <p class="info-block__result-info__title">hjúkrunarfræðingum</p>
     </div>
   </div>
   <div class="photo-block">

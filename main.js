@@ -2,9 +2,11 @@
 var container1 = document.getElementById('image-wrap-1');
 var container2 = document.getElementById('image-wrap-2');
 var container3 = document.getElementById('image-wrap-3');
+var canvasContainer = document.querySelector('.footer__download-images');
 
 function getCanvas() {
-  html2canvas(container1, {allowTaint: true}).then(function(canvas) {
+  canvasContainer.childNodes.forEach(child => child.innerHTML = '');
+  html2canvas(container1, {allowTaint: true}).then(function(canvas) { 
     var link = document.createElement("a");
     var downloadText = document.createElement("p");
     downloadText.innerHTML = 'Sækja mynd';
@@ -46,13 +48,21 @@ var step3Elements = document.getElementsByClassName('step-3');
 
 var totalTaxes = null;
 
-var nextButton = document.querySelector('.footer__buttons--next-step');
+var changeStepButton = document.querySelector('.footer__buttons--change-step');
 var stepIndicators = document.getElementsByClassName('footer__buttons--indicator');
-var footerButtons = document.querySelector('.footer__buttons');
+
+var company = document.querySelector('#company');
+company.onfocus = function(e) {
+  e.target.classList.remove('invalid');
+}
 
 var step = 1;
 
-function nextStep(stepIndicatorValue) {
+function changeStep(stepIndicatorValue) {
+  if (!company.validity.valid) {
+    company.classList.add('invalid');
+    return;
+  }
   if (step === 1) {
     for (var elem of step2Elements) {
       elem.classList.remove('hide');
@@ -60,25 +70,38 @@ function nextStep(stepIndicatorValue) {
     for (var elem of step1Elements) {
       elem.classList.add('hide');
     }
-    nextButton.classList.add('hide');
 
     stepIndicators[0].classList.remove('active');
     stepIndicators[1].classList.add('active');
-    // footerButtons.classList.add('step-2');
-    footerButtons.classList.add('hide');
 
     document.querySelector('.total__result-info').style.marginBottom = 0;
-    document.querySelectorAll('#company-name').forEach(elem => elem.innerHTML = document.querySelector('#company').value);
-    document.querySelectorAll('#total-taxes').forEach(elem => elem.innerHTML = totalTaxes.toLocaleString('de-DE'));   
+    document.querySelectorAll('#company-name').forEach(elem => elem.innerHTML = company.value);
+    document.querySelectorAll('#total-taxes').forEach(elem => elem.innerHTML = totalTaxes.toLocaleString('de-DE'));
+
     step = 2;
+    changeStepButton.textContent = 'Fyrra skref';
+
+    document.querySelector('#totalKindergardenTitle').textContent = 'leikskólaplássum';
+    document.querySelector('#totalPoliceTitle').textContent = 'lögregluþjónum';
+    document.querySelector('#totalNurseTitle').textContent = 'hjúkrunarfræðingum';
     getCanvas();
   } else if (step === 2) {
+    for (var elem of step1Elements) {
+      elem.classList.remove('hide');
+    }
     for (var elem of step2Elements) {
       elem.classList.add('hide');
     }
-    for (var elem of step3Elements) {
-      elem.classList.remove('hide');
-    }
+
+    stepIndicators[0].classList.add('active');
+    stepIndicators[1].classList.remove('active');
+
+    step = 1;
+    changeStepButton.textContent = 'Næsta skref';
+
+    document.querySelector('#totalKindergardenTitle').textContent = 'Leikskólapláss';
+    document.querySelector('#totalPoliceTitle').textContent = 'Lögregluþjónar';
+    document.querySelector('#totalNurseTitle').textContent = 'Hjúkrunarfræðingar';
   }
 }
 
@@ -101,13 +124,16 @@ var slider2ValueNumber = null;
 var slider3ValueNumber = null;
 
 function crossUpdate(value, slider) {
-  if (slider3 === slider) {
-    slider3.noUiSlider.set((value * 450958.8).toFixed(2));
+  if (slider2 === slider) {
+    slider2.noUiSlider.set((value * 11200).toFixed(2));
+  }
+  else if (slider3 === slider) {
+    slider3.noUiSlider.set((value * 451).toFixed(2));
   }
 }
 
 function updateTotalValues() {
-  totalTaxes = slider2ValueCount * 0.33 + slider3ValueCount;
+  totalTaxes = slider2ValueCount * 330 + slider3ValueCount * 1000;
   var totalKindergarden = totalTaxes / costBabyInKindergardenYear;
   var totalPolice = totalTaxes / costPoliceOfficierYear;
   var totalNurse = totalTaxes / costNurseYear;
@@ -125,28 +151,28 @@ noUiSlider.create(slider1, {
   connect: [true, false],
   animate: false,
   range: {
-    min: 1,
-    max: 399
+    min: 0,
+    max: 4500
   },
 });
 noUiSlider.create(slider2, {
-  start: 560000000,
+  start: 560000,
   step: 1,
   animate: false,
   connect: [true, false],
   range: {
-    min: 100000,
-    max: 1120000000
+    min: 0,
+    max: 50400000
   }
 });
 noUiSlider.create(slider3, {
-  start: 5411506,
+  start: 22550,
   step: 1,
   animate: false,
   connect: [true, false],
   range: {
-    min: 10000,
-    max: 67162000
+    min: 0,
+    max: 2029500
   }
 });
 
@@ -165,6 +191,7 @@ slider3.noUiSlider.on('update', function (values, handle) {
 });
 
 slider1.noUiSlider.on('slide', function (values, handle) {
+  crossUpdate(values[handle], slider2);
   crossUpdate(values[handle], slider3);
 });
 
