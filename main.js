@@ -49,7 +49,6 @@ var step3Elements = document.getElementsByClassName('step-3');
 var totalTaxes = null;
 
 var changeStepButton = document.querySelector('.footer__buttons--change-step');
-var stepIndicators = document.getElementsByClassName('footer__buttons--indicator');
 
 var company = document.querySelector('#company');
 company.onfocus = function(e) {
@@ -71,19 +70,13 @@ function changeStep(stepIndicatorValue) {
       elem.classList.add('hide');
     }
 
-    stepIndicators[0].classList.remove('active');
-    stepIndicators[1].classList.add('active');
-
     document.querySelector('.total__result-info').style.marginBottom = 0;
     document.querySelectorAll('#company-name').forEach(elem => elem.innerHTML = company.value);
     document.querySelectorAll('#total-taxes').forEach(elem => elem.innerHTML = totalTaxes.toLocaleString('de-DE'));
 
     step = 2;
-    changeStepButton.textContent = 'Fyrra skref';
+    changeStepButton.textContent = 'Reikna aftur';
 
-    document.querySelector('#totalKindergardenTitle').textContent = 'leikskólaplássum';
-    document.querySelector('#totalPoliceTitle').textContent = 'lögregluþjónum';
-    document.querySelector('#totalNurseTitle').textContent = 'hjúkrunarfræðingum';
     getCanvas();
   } else if (step === 2) {
     for (var elem of step1Elements) {
@@ -93,15 +86,8 @@ function changeStep(stepIndicatorValue) {
       elem.classList.add('hide');
     }
 
-    stepIndicators[0].classList.add('active');
-    stepIndicators[1].classList.remove('active');
-
     step = 1;
-    changeStepButton.textContent = 'Næsta skref';
-
-    document.querySelector('#totalKindergardenTitle').textContent = 'Leikskólapláss';
-    document.querySelector('#totalPoliceTitle').textContent = 'Lögregluþjónar';
-    document.querySelector('#totalNurseTitle').textContent = 'Hjúkrunarfræðingar';
+    changeStepButton.textContent = 'Áfram';
   }
 }
 
@@ -133,7 +119,7 @@ function crossUpdate(value, slider) {
 }
 
 function updateTotalValues() {
-  totalTaxes = slider2ValueCount * 330 + slider3ValueCount * 1000;
+  totalTaxes = slider2ValueCount * 328.801 + slider3ValueCount * 1000;
   var totalKindergarden = totalTaxes / costBabyInKindergardenYear;
   var totalPolice = totalTaxes / costPoliceOfficierYear;
   var totalNurse = totalTaxes / costNurseYear;
