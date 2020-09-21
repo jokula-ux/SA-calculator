@@ -13,7 +13,7 @@ function getCanvas() {
     link.appendChild(canvas);
     link.appendChild(downloadText);
     document.getElementById('download-image-1').appendChild(link);
-    link.download = "Kindergarten.png";
+    link.download = "Faedingar.png";
     link.href = canvas.toDataURL("image/png");
     link.target = '_blank';
   });
@@ -24,7 +24,7 @@ function getCanvas() {
     link.appendChild(canvas);
     link.appendChild(downloadText);
     document.getElementById('download-image-2').appendChild(link);
-    link.download = "Police.png";
+    link.download = "Leikskolaplass.png";
     link.href = canvas.toDataURL("image/png");
     link.target = '_blank';
   });
@@ -35,7 +35,7 @@ function getCanvas() {
     link.appendChild(canvas);
     link.appendChild(downloadText);
     document.getElementById('download-image-3').appendChild(link);
-    link.download = "Nurse.png";
+    link.download = "hjukrunarrymi.png";
     link.href = canvas.toDataURL("image/png");
     link.target = '_blank';
   });
@@ -95,9 +95,12 @@ function changeStep(stepIndicatorValue) {
 var lockedState = true;
 var lockedSlider = false;
 
+var costNumberOfBirths = 307416;
 var costBabyInKindergardenYear = 2289258;
-var costPoliceOfficierYear = 12427622;
-var costNurseYear = 12923192;
+var costNursHomeSpaces = 13168558;
+
+// var costPoliceOfficierYear = 12427622;
+// var costNurseYear = 12923192;
 
 var slider1 = document.getElementById('employees');
 var slider2 = document.getElementById('salaries');
@@ -120,15 +123,18 @@ function crossUpdate(value, slider) {
 
 function updateTotalValues() {
   totalTaxes = slider2ValueCount * 328.801 + slider3ValueCount * 1000;
+  
+  // var totalPolice = totalTaxes / costPoliceOfficierYear;
+  // var totalNurse = totalTaxes / costNurseYear;
+  var totalNumberOfBirths = totalTaxes / costNumberOfBirths;
   var totalKindergarden = totalTaxes / costBabyInKindergardenYear;
-  var totalPolice = totalTaxes / costPoliceOfficierYear;
-  var totalNurse = totalTaxes / costNurseYear;
+  var totalNursHomeSpaces = totalTaxes / costNursHomeSpaces;
   // Set total cost of having a baby at the kindegarden for a year
-  document.querySelectorAll('#totalKindergarden').forEach(elem => elem.innerHTML = (Math.floor(totalKindergarden * 10) / 10).toLocaleString('de-DE'));
+  document.querySelectorAll('#totalNumberOfBirths').forEach(elem => elem.innerHTML = (Math.floor(totalNumberOfBirths * 10) / 10).toLocaleString('de-DE'));
   // Set total cost of having a police officier for a year
-  document.querySelectorAll('#totalPolice').forEach(elem => elem.innerHTML = (Math.floor(totalPolice * 10) / 10).toLocaleString('de-DE'));
+  document.querySelectorAll('#totalKindergarden').forEach(elem => elem.innerHTML = (Math.floor(totalKindergarden * 10) / 10).toLocaleString('de-DE'));
   // Set total cost of having a nurse for a year
-  document.querySelectorAll('#totalNurse').forEach(elem => elem.innerHTML = (Math.floor(totalNurse * 10) / 10).toLocaleString('de-DE'));
+  document.querySelectorAll('#totalNursHomeSpaces').forEach(elem => elem.innerHTML = (Math.floor(totalNursHomeSpaces * 10) / 10).toLocaleString('de-DE'));
 }
 
 noUiSlider.create(slider1, {
