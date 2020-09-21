@@ -515,8 +515,9 @@
   display: flex;
   position: absolute;
   left: -9999;
+  top: 0;
   width: 1200px;
-  height: 630px;
+  height: 790px;
   background-color: #EEECE7;
 }
 .info-block {
@@ -604,7 +605,7 @@
   height: 349px;
 }
 .photo-block__image-3 {
-  bottom: 22px;
+  bottom: 270px;
   right: 0;
   z-index: 3;
   position: absolute;
