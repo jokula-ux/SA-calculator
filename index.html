@@ -26,15 +26,27 @@
       <div class="total__result-info">
         <div class="total__result-info__block">
           <p class="total__result-info__number" id="totalNumberOfBirths"></p>
-          <p class="total__result-info__title" id="totalNumberOfBirthsTitle">fæðingum</p>
+          <p class="total__result-info__title">fæðingum</p>
         </div>
         <div class="total__result-info__block">
           <p class="total__result-info__number" id="totalKindergarden"></p>
-          <p class="total__result-info__title" id="totalKindergardenTitle">leikskólaplássum</p>
+          <p class="total__result-info__title">leikskólaplássum</p>
         </div>
         <div class="total__result-info__block">
           <p class="total__result-info__number" id="totalNursHomeSpaces"></p>
-          <p class="total__result-info__title" id="totalNursHomeSpacesTitle">Dvalar- og hjúkrunarrýmum</p>
+          <p class="total__result-info__title">dvalar- og hjúkrunarrýmum</p>
+        </div>
+        <div class="total__result-info__block">
+          <p class="total__result-info__number" id="totalNurses"></p>
+          <p class="total__result-info__title">hjúkrunarfræðingum</p>
+        </div>
+        <div class="total__result-info__block">
+          <p class="total__result-info__number" id="totalTeachers"></p>
+          <p class="total__result-info__title">grunnskólakennurum</p>
+        </div>
+        <div class="total__result-info__block">
+          <p class="total__result-info__number" id="totalPoliceOfficers"></p>
+          <p class="total__result-info__title">lögregluþjónnum</p>
         </div>
       </div>
     </div>
@@ -56,17 +68,28 @@
         <input onclick="nextStep()" value="Senda niðurstöður" class="footer__form__submit-button">
       </div>
     </form> -->
-    <div class="footer__success-message step-2 hide">
-      <p>Sækja myndir til að deila með öðrum</p>
-    </div>
-    <div class="footer__download-images step-2 hide">
+    <a class="footer__cta-message step-2 hide">
+      <svg class="cta-message__icon" width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M10 5.5L6 9.5L2 5.5" stroke="#CED0CE" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M6 9.5V0.5" stroke="#CED0CE" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M11.5 11.5H0.5" stroke="#CED0CE" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <p class="cta-message__text">Sækja myndir til að deila á samfélagsmiðlum</p>
+    </a>
+    <!-- <div class="footer__download-images step-2 hide">
       <div id="download-image-1" class="footer__download-images__block">
       </div>
       <div id="download-image-2" class="footer__download-images__block">
       </div>
       <div id="download-image-3" class="footer__download-images__block">
       </div>
-    </div>
+      <div id="download-image-4" class="footer__download-images__block">
+      </div>
+      <div id="download-image-5" class="footer__download-images__block">
+      </div>
+      <div id="download-image-6" class="footer__download-images__block">
+      </div>
+    </div> -->
     <div class="footer__buttons">
       <button onclick="changeStep()" class="footer__buttons--change-step">Áfram</button>
     </div>
@@ -130,9 +153,9 @@
     </div>
   </div>
   <div class="photo-block">
-    <img class="photo-block__image-1" src="./images/kinder-1.jpg" alt="kinder-1"/>
-    <img class="photo-block__image-2" src="./images/kinder-2.jpg" alt="kinder-2"/>
-    <img class="photo-block__image-3" src="./images/kinder-3.jpg" alt="kinder-3"/>
+    <img class="photo-block__image-1" src="./images/kindergarden-1.jpg" alt="kindergarden-1"/>
+    <img class="photo-block__image-2" src="./images/kindergarden-2.jpg" alt="kindergarden-2"/>
+    <img class="photo-block__image-3" src="./images/kindergarden-3.jpg" alt="kindergarden-3"/>
   </div>
 </div>
 <div id="image-wrap-3" class="mail-wrapper">
@@ -157,15 +180,111 @@
     </div>
     <div class="info-block__result-info">
       <p class="info-block__result-info__number" id="totalNursHomeSpaces"></p>
-      <p class="info-block__result-info__title">Dvalar- og hjúkrunarrýmum</p>
+      <p class="info-block__result-info__title">dvalar- og hjúkrunarrými</p>
     </div>
   </div>
   <div class="photo-block">
-    <img class="photo-block__image-1" src="./images/nurse-1.jpg" alt="nurse-1"/>
-    <img class="photo-block__image-2" src="./images/nurse-2.jpg" alt="nurse-2"/>
-    <img class="photo-block__image-3" src="./images/nurse-3.jpg" alt="nurse-3"/>  </div>
+    <img class="photo-block__image-1" src="./images/nursinghomespaces-1.jpg" alt="nursinghomespaces-1"/>
+    <img class="photo-block__image-2" src="./images/nursinghomespaces-2.jpg" alt="nursinghomespaces-2"/>
+    <img class="photo-block__image-3" src="./images/nursinghomespaces-3.jpg" alt="nursinghomespaces-3"/>
+  </div>
+</div>
+<div id="image-wrap-4" class="mail-wrapper">
+  <div class="info-block">
+    <div class="info-block__logo">
+      <svg width="56" height="57" viewBox="0 0 56 57" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M22.6478 12.0021C22.6478 12.0021 23.3168 13.1543 24.7502 13.1543H31.153C31.153 13.1543 32.5865 13.1543 33.2554 12.0021L35.0711 7.77737C35.0711 7.77737 35.7401 6.62517 35.0711 5.37695L32.5865 1.1522C32.5865 1.1522 31.9175 0 30.4841 0H25.5147C25.5147 0 24.0813 0 23.4123 1.1522L20.9277 5.37695C20.9277 5.37695 20.2587 6.52915 20.9277 7.77737L22.6478 12.0021Z" fill="#B85B24"/>
+        <path d="M22.6478 44.2638C22.6478 44.2638 23.3168 43.1116 24.7502 43.1116H31.153C31.153 43.1116 32.5865 43.1116 33.2554 44.2638L35.0711 48.4885C35.0711 48.4885 35.7401 49.6407 35.0711 50.889L32.5865 55.1137C32.5865 55.1137 31.9175 56.2659 30.4841 56.2659H25.5147C25.5147 56.2659 24.0813 56.2659 23.4123 55.1137L20.9277 50.889C20.9277 50.889 20.2587 49.7367 20.9277 48.4885L22.6478 44.2638Z" fill="#B85B24"/>
+        <path d="M12.9004 20.5475C12.9004 20.5475 14.2383 20.8356 15.1939 19.8754L19.6854 15.3626C19.6854 15.3626 20.7366 14.3064 20.3544 13.0582L18.7298 8.73742C18.7298 8.73742 18.4431 7.39318 17.1052 7.10513L12.4226 5.85691C12.4226 5.85691 11.0847 5.56886 10.1291 6.52903L6.59321 10.0817C6.59321 10.0817 5.63757 11.0418 5.92426 12.3861L7.07102 17.0909C7.07102 17.0909 7.35772 18.4351 8.69561 18.7232L12.9004 20.5475Z" fill="#B85B24"/>
+        <path d="M20.4492 43.3036C20.4492 43.3036 20.7359 41.9594 19.7802 40.9992L15.2887 36.4864C15.2887 36.4864 14.3331 35.4302 12.9952 35.8143L8.69483 37.4466C8.69483 37.4466 7.35694 37.7346 7.07024 39.0789L5.82791 43.8797C5.82791 43.8797 5.54122 45.224 6.49686 46.1842L10.0327 49.7368C10.0327 49.7368 10.9884 50.697 12.3263 50.4089L17.0089 49.2567C17.0089 49.2567 18.3468 48.9686 18.6335 47.6244L20.4492 43.3036Z" fill="#B85B24"/>
+        <path d="M44.0545 22.756C44.0545 22.756 42.9077 23.4281 42.9077 24.8684V31.3015C42.9077 31.3015 42.9077 32.7418 44.0545 33.4139L48.2593 35.2382C48.2593 35.2382 49.4061 35.9104 50.6484 35.2382L54.8532 32.7418C54.8532 32.7418 56 32.0697 56 30.6294V25.6365C56 25.6365 56 24.1963 54.8532 23.5242L50.6484 21.0277C50.6484 21.0277 49.5016 20.3556 48.2593 21.0277L44.0545 22.756Z" fill="#B85B24"/>
+        <path d="M35.6448 43.3036C35.6448 43.3036 35.3581 41.9594 36.3138 40.9992L40.8053 36.4864C40.8053 36.4864 41.8565 35.4302 43.0988 35.8143L47.3036 37.4466C47.3036 37.4466 48.6415 37.7346 48.9282 39.0789L50.075 43.7837C50.075 43.7837 50.3616 45.128 49.406 46.0881L45.9657 49.7368C45.9657 49.7368 45.0101 50.697 43.6722 50.4089L38.9895 49.2567C38.9895 49.2567 37.6516 48.9686 37.365 47.6244L35.6448 43.3036Z" fill="#B85B24"/>
+        <path d="M43.0992 20.5475C43.0992 20.5475 41.7613 20.8356 40.8057 19.8754L36.3142 15.3626C36.3142 15.3626 35.263 14.3064 35.6452 13.0582L37.2698 8.73742C37.2698 8.73742 37.5565 7.39318 38.8944 7.10513L43.6726 5.85691C43.6726 5.85691 45.0105 5.56886 45.9661 6.52903L49.502 10.0817C49.502 10.0817 50.4576 11.0418 50.1709 12.3861L49.0242 17.0909C49.0242 17.0909 48.7375 18.4351 47.3996 18.7232L43.0992 20.5475Z" fill="#B85B24"/>
+        <path d="M11.9455 22.756C11.9455 22.756 13.0922 23.4281 13.0922 24.8684V31.3015C13.0922 31.3015 13.0922 32.7418 11.9455 33.4139L7.74067 35.2382C7.74067 35.2382 6.5939 35.9104 5.35157 35.2382L1.14677 32.7418C1.14677 32.7418 0 32.0697 0 30.6294V25.6365C0 25.6365 0 24.1963 1.14677 23.5242L5.35157 21.0277C5.35157 21.0277 6.49834 20.3556 7.74067 21.0277L11.9455 22.756Z" fill="#B85B24"/>
+      </svg>
+    </div>
+    <div class="info-block__title">
+      Saman byggjum við íslenskt samfélag
+    </div>
+    <div class="info-block__lead-text">
+      Okkar fyrirtæki, <span id="company-name"></span> lagði til <span id="total-taxes"></span> kr. í fyrra til íslenskrar velferðar. Það samsvarar:
+    </div>
+    <div class="info-block__result-info">
+      <p class="info-block__result-info__number" id="totalNurses"></p>
+      <p class="info-block__result-info__title">hjúkrunarfræðingum</p>
+    </div>
+  </div>
+  <div class="photo-block">
+    <img class="photo-block__image-1" src="./images/nurses-1.jpg" alt="nurses-1"/>
+    <img class="photo-block__image-2" src="./images/nurses-2.jpg" alt="nurses-2"/>
+    <img class="photo-block__image-3" src="./images/nurses-3.jpg" alt="nurses-3"/>
+  </div>
+</div>
+<div id="image-wrap-5" class="mail-wrapper">
+  <div class="info-block">
+    <div class="info-block__logo">
+      <svg width="56" height="57" viewBox="0 0 56 57" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M22.6478 12.0021C22.6478 12.0021 23.3168 13.1543 24.7502 13.1543H31.153C31.153 13.1543 32.5865 13.1543 33.2554 12.0021L35.0711 7.77737C35.0711 7.77737 35.7401 6.62517 35.0711 5.37695L32.5865 1.1522C32.5865 1.1522 31.9175 0 30.4841 0H25.5147C25.5147 0 24.0813 0 23.4123 1.1522L20.9277 5.37695C20.9277 5.37695 20.2587 6.52915 20.9277 7.77737L22.6478 12.0021Z" fill="#B85B24"/>
+        <path d="M22.6478 44.2638C22.6478 44.2638 23.3168 43.1116 24.7502 43.1116H31.153C31.153 43.1116 32.5865 43.1116 33.2554 44.2638L35.0711 48.4885C35.0711 48.4885 35.7401 49.6407 35.0711 50.889L32.5865 55.1137C32.5865 55.1137 31.9175 56.2659 30.4841 56.2659H25.5147C25.5147 56.2659 24.0813 56.2659 23.4123 55.1137L20.9277 50.889C20.9277 50.889 20.2587 49.7367 20.9277 48.4885L22.6478 44.2638Z" fill="#B85B24"/>
+        <path d="M12.9004 20.5475C12.9004 20.5475 14.2383 20.8356 15.1939 19.8754L19.6854 15.3626C19.6854 15.3626 20.7366 14.3064 20.3544 13.0582L18.7298 8.73742C18.7298 8.73742 18.4431 7.39318 17.1052 7.10513L12.4226 5.85691C12.4226 5.85691 11.0847 5.56886 10.1291 6.52903L6.59321 10.0817C6.59321 10.0817 5.63757 11.0418 5.92426 12.3861L7.07102 17.0909C7.07102 17.0909 7.35772 18.4351 8.69561 18.7232L12.9004 20.5475Z" fill="#B85B24"/>
+        <path d="M20.4492 43.3036C20.4492 43.3036 20.7359 41.9594 19.7802 40.9992L15.2887 36.4864C15.2887 36.4864 14.3331 35.4302 12.9952 35.8143L8.69483 37.4466C8.69483 37.4466 7.35694 37.7346 7.07024 39.0789L5.82791 43.8797C5.82791 43.8797 5.54122 45.224 6.49686 46.1842L10.0327 49.7368C10.0327 49.7368 10.9884 50.697 12.3263 50.4089L17.0089 49.2567C17.0089 49.2567 18.3468 48.9686 18.6335 47.6244L20.4492 43.3036Z" fill="#B85B24"/>
+        <path d="M44.0545 22.756C44.0545 22.756 42.9077 23.4281 42.9077 24.8684V31.3015C42.9077 31.3015 42.9077 32.7418 44.0545 33.4139L48.2593 35.2382C48.2593 35.2382 49.4061 35.9104 50.6484 35.2382L54.8532 32.7418C54.8532 32.7418 56 32.0697 56 30.6294V25.6365C56 25.6365 56 24.1963 54.8532 23.5242L50.6484 21.0277C50.6484 21.0277 49.5016 20.3556 48.2593 21.0277L44.0545 22.756Z" fill="#B85B24"/>
+        <path d="M35.6448 43.3036C35.6448 43.3036 35.3581 41.9594 36.3138 40.9992L40.8053 36.4864C40.8053 36.4864 41.8565 35.4302 43.0988 35.8143L47.3036 37.4466C47.3036 37.4466 48.6415 37.7346 48.9282 39.0789L50.075 43.7837C50.075 43.7837 50.3616 45.128 49.406 46.0881L45.9657 49.7368C45.9657 49.7368 45.0101 50.697 43.6722 50.4089L38.9895 49.2567C38.9895 49.2567 37.6516 48.9686 37.365 47.6244L35.6448 43.3036Z" fill="#B85B24"/>
+        <path d="M43.0992 20.5475C43.0992 20.5475 41.7613 20.8356 40.8057 19.8754L36.3142 15.3626C36.3142 15.3626 35.263 14.3064 35.6452 13.0582L37.2698 8.73742C37.2698 8.73742 37.5565 7.39318 38.8944 7.10513L43.6726 5.85691C43.6726 5.85691 45.0105 5.56886 45.9661 6.52903L49.502 10.0817C49.502 10.0817 50.4576 11.0418 50.1709 12.3861L49.0242 17.0909C49.0242 17.0909 48.7375 18.4351 47.3996 18.7232L43.0992 20.5475Z" fill="#B85B24"/>
+        <path d="M11.9455 22.756C11.9455 22.756 13.0922 23.4281 13.0922 24.8684V31.3015C13.0922 31.3015 13.0922 32.7418 11.9455 33.4139L7.74067 35.2382C7.74067 35.2382 6.5939 35.9104 5.35157 35.2382L1.14677 32.7418C1.14677 32.7418 0 32.0697 0 30.6294V25.6365C0 25.6365 0 24.1963 1.14677 23.5242L5.35157 21.0277C5.35157 21.0277 6.49834 20.3556 7.74067 21.0277L11.9455 22.756Z" fill="#B85B24"/>
+      </svg>
+    </div>
+    <div class="info-block__title">
+      Saman byggjum við íslenskt samfélag
+    </div>
+    <div class="info-block__lead-text">
+      Okkar fyrirtæki, <span id="company-name"></span> lagði til <span id="total-taxes"></span> kr. í fyrra til íslenskrar velferðar. Það samsvarar:
+    </div>
+    <div class="info-block__result-info">
+      <p class="info-block__result-info__number" id="totalTeachers"></p>
+      <p class="info-block__result-info__title">grunnskólakennurum</p>
+    </div>
+  </div>
+  <div class="photo-block">
+    <img class="photo-block__image-1" src="./images/teachers-1.jpg" alt="teachers-1"/>
+    <img class="photo-block__image-2" src="./images/teachers-2.jpg" alt="teachers-2"/>
+    <img class="photo-block__image-3" src="./images/teachers-3.jpg" alt="teachers-3"/>
+  </div>
+</div>
+<div id="image-wrap-6" class="mail-wrapper">
+  <div class="info-block">
+    <div class="info-block__logo">
+      <svg width="56" height="57" viewBox="0 0 56 57" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M22.6478 12.0021C22.6478 12.0021 23.3168 13.1543 24.7502 13.1543H31.153C31.153 13.1543 32.5865 13.1543 33.2554 12.0021L35.0711 7.77737C35.0711 7.77737 35.7401 6.62517 35.0711 5.37695L32.5865 1.1522C32.5865 1.1522 31.9175 0 30.4841 0H25.5147C25.5147 0 24.0813 0 23.4123 1.1522L20.9277 5.37695C20.9277 5.37695 20.2587 6.52915 20.9277 7.77737L22.6478 12.0021Z" fill="#B85B24"/>
+        <path d="M22.6478 44.2638C22.6478 44.2638 23.3168 43.1116 24.7502 43.1116H31.153C31.153 43.1116 32.5865 43.1116 33.2554 44.2638L35.0711 48.4885C35.0711 48.4885 35.7401 49.6407 35.0711 50.889L32.5865 55.1137C32.5865 55.1137 31.9175 56.2659 30.4841 56.2659H25.5147C25.5147 56.2659 24.0813 56.2659 23.4123 55.1137L20.9277 50.889C20.9277 50.889 20.2587 49.7367 20.9277 48.4885L22.6478 44.2638Z" fill="#B85B24"/>
+        <path d="M12.9004 20.5475C12.9004 20.5475 14.2383 20.8356 15.1939 19.8754L19.6854 15.3626C19.6854 15.3626 20.7366 14.3064 20.3544 13.0582L18.7298 8.73742C18.7298 8.73742 18.4431 7.39318 17.1052 7.10513L12.4226 5.85691C12.4226 5.85691 11.0847 5.56886 10.1291 6.52903L6.59321 10.0817C6.59321 10.0817 5.63757 11.0418 5.92426 12.3861L7.07102 17.0909C7.07102 17.0909 7.35772 18.4351 8.69561 18.7232L12.9004 20.5475Z" fill="#B85B24"/>
+        <path d="M20.4492 43.3036C20.4492 43.3036 20.7359 41.9594 19.7802 40.9992L15.2887 36.4864C15.2887 36.4864 14.3331 35.4302 12.9952 35.8143L8.69483 37.4466C8.69483 37.4466 7.35694 37.7346 7.07024 39.0789L5.82791 43.8797C5.82791 43.8797 5.54122 45.224 6.49686 46.1842L10.0327 49.7368C10.0327 49.7368 10.9884 50.697 12.3263 50.4089L17.0089 49.2567C17.0089 49.2567 18.3468 48.9686 18.6335 47.6244L20.4492 43.3036Z" fill="#B85B24"/>
+        <path d="M44.0545 22.756C44.0545 22.756 42.9077 23.4281 42.9077 24.8684V31.3015C42.9077 31.3015 42.9077 32.7418 44.0545 33.4139L48.2593 35.2382C48.2593 35.2382 49.4061 35.9104 50.6484 35.2382L54.8532 32.7418C54.8532 32.7418 56 32.0697 56 30.6294V25.6365C56 25.6365 56 24.1963 54.8532 23.5242L50.6484 21.0277C50.6484 21.0277 49.5016 20.3556 48.2593 21.0277L44.0545 22.756Z" fill="#B85B24"/>
+        <path d="M35.6448 43.3036C35.6448 43.3036 35.3581 41.9594 36.3138 40.9992L40.8053 36.4864C40.8053 36.4864 41.8565 35.4302 43.0988 35.8143L47.3036 37.4466C47.3036 37.4466 48.6415 37.7346 48.9282 39.0789L50.075 43.7837C50.075 43.7837 50.3616 45.128 49.406 46.0881L45.9657 49.7368C45.9657 49.7368 45.0101 50.697 43.6722 50.4089L38.9895 49.2567C38.9895 49.2567 37.6516 48.9686 37.365 47.6244L35.6448 43.3036Z" fill="#B85B24"/>
+        <path d="M43.0992 20.5475C43.0992 20.5475 41.7613 20.8356 40.8057 19.8754L36.3142 15.3626C36.3142 15.3626 35.263 14.3064 35.6452 13.0582L37.2698 8.73742C37.2698 8.73742 37.5565 7.39318 38.8944 7.10513L43.6726 5.85691C43.6726 5.85691 45.0105 5.56886 45.9661 6.52903L49.502 10.0817C49.502 10.0817 50.4576 11.0418 50.1709 12.3861L49.0242 17.0909C49.0242 17.0909 48.7375 18.4351 47.3996 18.7232L43.0992 20.5475Z" fill="#B85B24"/>
+        <path d="M11.9455 22.756C11.9455 22.756 13.0922 23.4281 13.0922 24.8684V31.3015C13.0922 31.3015 13.0922 32.7418 11.9455 33.4139L7.74067 35.2382C7.74067 35.2382 6.5939 35.9104 5.35157 35.2382L1.14677 32.7418C1.14677 32.7418 0 32.0697 0 30.6294V25.6365C0 25.6365 0 24.1963 1.14677 23.5242L5.35157 21.0277C5.35157 21.0277 6.49834 20.3556 7.74067 21.0277L11.9455 22.756Z" fill="#B85B24"/>
+      </svg>
+    </div>
+    <div class="info-block__title">
+      Saman byggjum við íslenskt samfélag
+    </div>
+    <div class="info-block__lead-text">
+      Okkar fyrirtæki, <span id="company-name"></span> lagði til <span id="total-taxes"></span> kr. í fyrra til íslenskrar velferðar. Það samsvarar:
+    </div>
+    <div class="info-block__result-info">
+      <p class="info-block__result-info__number" id="totalPoliceOfficers"></p>
+      <p class="info-block__result-info__title">lögregluþjónnum</p>
+    </div>
+  </div>
+  <div class="photo-block">
+    <img class="photo-block__image-1" src="./images/policeofficers-1.jpg" alt="policeofficers-1"/>
+    <img class="photo-block__image-2" src="./images/policeofficers-2.jpg" alt="policeofficers-2"/>
+    <img class="photo-block__image-3" src="./images/policeofficers-3.jpg" alt="policeofficers-3"/>
+  </div>
 </div>
 <link rel="stylesheet" href="styles.css">
 <script src="nouislider.min.js"></script>
 <script src="html2canvas.min.js"></script>
+<script src="jszip.min.js"></script>
+<script src="FileSaver.js"></script>
 <script src="main.js"></script>
