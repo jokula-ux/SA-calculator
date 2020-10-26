@@ -119,10 +119,10 @@ var slider3ValueNumber = null;
 
 function crossUpdate(value, slider) {
   if (slider2 === slider) {
-    slider2.noUiSlider.set((value * 11200).toFixed(2));
+    slider2.noUiSlider.set((value * 10800).toFixed(2));
   }
   else if (slider3 === slider) {
-    slider3.noUiSlider.set((value * 451).toFixed(2));
+    slider3.noUiSlider.set((value * 447).toFixed(2));
   }
 }
 
@@ -155,7 +155,7 @@ noUiSlider.create(slider1, {
   },
 });
 noUiSlider.create(slider2, {
-  start: 560000,
+  start: 540000,
   step: 1,
   animate: false,
   connect: [true, false],
@@ -165,7 +165,7 @@ noUiSlider.create(slider2, {
   }
 });
 noUiSlider.create(slider3, {
-  start: 22550,
+  start: 22350,
   step: 1,
   animate: false,
   connect: [true, false],
