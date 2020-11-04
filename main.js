@@ -77,7 +77,7 @@ function changeStep(stepIndicatorValue) {
 
     document.querySelector('.total__result-info').style.marginBottom = 0;
     document.querySelectorAll('#company-name').forEach(elem => elem.innerHTML = company.value);
-    document.querySelectorAll('#total-taxes').forEach(elem => elem.innerHTML = totalTaxes.toLocaleString('de-DE'));
+    document.querySelectorAll('#total-taxes').forEach(elem => elem.innerHTML = Math.floor(totalTaxes).toLocaleString('de-DE'));
 
     step = 2;
     changeStepButton.textContent = 'Reikna aftur';
