@@ -2,9 +2,9 @@
 var container1 = document.getElementById('image-wrap-1');
 var container2 = document.getElementById('image-wrap-2');
 var container3 = document.getElementById('image-wrap-3');
-var container4 = document.getElementById('image-wrap-4');
-var container5 = document.getElementById('image-wrap-5');
-var container6 = document.getElementById('image-wrap-6');
+// var container4 = document.getElementById('image-wrap-4');
+// var container5 = document.getElementById('image-wrap-5');
+// var container6 = document.getElementById('image-wrap-6');
 var canvasContainer = document.querySelector('.footer__download-images');
 var downloadImagesButton = document.querySelector('.footer__cta-message');
 
@@ -25,15 +25,15 @@ function getCanvas() {
     await html2canvas(container3, {allowTaint: true}).then(function(canvas) {
       zip.file("Hjukrunarrymi.png", canvas.toDataURL().split('base64,')[1], {base64: true});
     });
-    await html2canvas(container4, {allowTaint: true}).then(function(canvas) {
-      zip.file("Hjukrunarfraedingar.png", canvas.toDataURL().split('base64,')[1], {base64: true});
-    });
-    await html2canvas(container5, {allowTaint: true}).then(function(canvas) {
-      zip.file("Grunnskolakennarar.png", canvas.toDataURL().split('base64,')[1], {base64: true});
-    });
-    await html2canvas(container6, {allowTaint: true}).then(function(canvas) {
-      zip.file("Logregluthjonar.png", canvas.toDataURL().split('base64,')[1], {base64: true});
-    });
+    // await html2canvas(container4, {allowTaint: true}).then(function(canvas) {
+    //   zip.file("Hjukrunarfraedingar.png", canvas.toDataURL().split('base64,')[1], {base64: true});
+    // });
+    // await html2canvas(container5, {allowTaint: true}).then(function(canvas) {
+    //   zip.file("Grunnskolakennarar.png", canvas.toDataURL().split('base64,')[1], {base64: true});
+    // });
+    // await html2canvas(container6, {allowTaint: true}).then(function(canvas) {
+    //   zip.file("Logregluthjonar.png", canvas.toDataURL().split('base64,')[1], {base64: true});
+    // });
   }
   fillArchive()
     .then(() => downloadImagesButton.addEventListener('click', downloadPackage));
@@ -103,9 +103,9 @@ var lockedSlider = false;
 var costNumberOfBirths = 307416;
 var costBabyInKindergardenYear = 2289258;
 var costNursHomeSpaces = 13168558;
-var costNurses = 12923192;
-var costTeachers = 9339406;
-var costPoliceOfficers = 12427622;
+//var costNurses = 12923192;
+//var costTeachers = 9339406;
+//var costPoliceOfficers = 12427622;
 
 var slider1 = document.getElementById('employees');
 var slider2 = document.getElementById('salaries');
@@ -132,16 +132,16 @@ function updateTotalValues() {
   var totalNumberOfBirths = totalTaxes / costNumberOfBirths;
   var totalKindergarden = totalTaxes / costBabyInKindergardenYear;
   var totalNursHomeSpaces = totalTaxes / costNursHomeSpaces;
-  var totalNurses = totalTaxes / costNurses;
-  var totalTeachers = totalTaxes / costTeachers;
-  var totalPoliceOfficers = totalTaxes / costPoliceOfficers;
+  //var totalNurses = totalTaxes / costNurses;
+  //var totalTeachers = totalTaxes / costTeachers;
+  //var totalPoliceOfficers = totalTaxes / costPoliceOfficers;
 
-  document.querySelectorAll('#totalNumberOfBirths').forEach(elem => elem.innerHTML = (Math.floor(totalNumberOfBirths * 10) / 10).toLocaleString('de-DE'));
-  document.querySelectorAll('#totalKindergarden').forEach(elem => elem.innerHTML = (Math.floor(totalKindergarden * 10) / 10).toLocaleString('de-DE'));
-  document.querySelectorAll('#totalNursHomeSpaces').forEach(elem => elem.innerHTML = (Math.floor(totalNursHomeSpaces * 10) / 10).toLocaleString('de-DE'));4
-  document.querySelectorAll('#totalNurses').forEach(elem => elem.innerHTML = (Math.floor(totalNurses * 10) / 10).toLocaleString('de-DE'));
-  document.querySelectorAll('#totalTeachers').forEach(elem => elem.innerHTML = (Math.floor(totalTeachers * 10) / 10).toLocaleString('de-DE'));
-  document.querySelectorAll('#totalPoliceOfficers').forEach(elem => elem.innerHTML = (Math.floor(totalPoliceOfficers * 10) / 10).toLocaleString('de-DE'));
+  document.querySelectorAll('#totalNumberOfBirths').forEach(elem => elem.innerHTML = (Math.floor(Math.floor(totalNumberOfBirths * 10) / 10)).toLocaleString('de-DE'));
+  document.querySelectorAll('#totalKindergarden').forEach(elem => elem.innerHTML = (Math.floor(Math.floor(totalKindergarden * 10) / 10)).toLocaleString('de-DE'));
+  document.querySelectorAll('#totalNursHomeSpaces').forEach(elem => elem.innerHTML = (Math.floor(Math.floor(totalNursHomeSpaces * 10) / 10)).toLocaleString('de-DE'));
+  //document.querySelectorAll('#totalNurses').forEach(elem => elem.innerHTML = (Math.floor(totalNurses * 10) / 10).toLocaleString('de-DE'));
+  //document.querySelectorAll('#totalTeachers').forEach(elem => elem.innerHTML = (Math.floor(totalTeachers * 10) / 10).toLocaleString('de-DE'));
+  //document.querySelectorAll('#totalPoliceOfficers').forEach(elem => elem.innerHTML = (Math.floor(totalPoliceOfficers * 10) / 10).toLocaleString('de-DE'));
 }
 
 noUiSlider.create(slider1, {
@@ -154,6 +154,13 @@ noUiSlider.create(slider1, {
     max: 4500
   },
 });
+var slider1ValueMask = IMask(slider1Value, {
+  mask: Number,
+  scale: 0,
+  signed: true,
+  min: 0,
+  max: 4500
+});
 noUiSlider.create(slider2, {
   start: 540000,
   step: 1,
@@ -163,6 +170,14 @@ noUiSlider.create(slider2, {
     min: 0,
     max: 50400000
   }
+});
+var slider2ValueMask = IMask(slider2Value, {
+  mask: Number,
+  scale: 0,
+  signed: true,
+  thousandsSeparator: '.',
+  min: 0,
+  max: 50400000
 });
 noUiSlider.create(slider3, {
   start: 22350,
@@ -174,25 +189,58 @@ noUiSlider.create(slider3, {
     max: 2029500
   }
 });
+var slider3ValueMask = IMask(slider3Value, {
+  mask: Number,
+  scale: 0,
+  signed: true,
+  thousandsSeparator: '.',
+  min: 0,
+  max: 2029500
+});
 
 slider1.noUiSlider.on('update', function (values, handle) {
-  slider1Value.innerHTML = Math.trunc(values[handle]);
+  slider1Value.value = Math.trunc(values[handle]);
+  changeInputSize(slider1Value);
+  slider1ValueMask.updateValue();
 });
 
 slider2.noUiSlider.on('update', function (values, handle) {
   slider2ValueCount = Number(values[handle]);
-  slider2Value.innerHTML = Number(values[handle]).toLocaleString('de-DE');
+  slider2Value.value = Number(values[handle]).toLocaleString('de-DE');
+  changeInputSize(slider2Value);
+  slider2ValueMask.updateValue();
 });
 
 slider3.noUiSlider.on('update', function (values, handle) {
   slider3ValueCount = Number(values[handle]);
-  slider3Value.innerHTML = Number(values[handle]).toLocaleString('de-DE');
+  slider3Value.value = Number(values[handle]).toLocaleString('de-DE');
+  changeInputSize(slider3Value);
+  slider3ValueMask.updateValue();
 });
 
-slider1.noUiSlider.on('slide', function (values, handle) {
+slider1.noUiSlider.on('update', function (values, handle) {
   crossUpdate(values[handle], slider2);
   crossUpdate(values[handle], slider3);
 });
 
 slider2.noUiSlider.on('update', updateTotalValues);
 slider3.noUiSlider.on('update', updateTotalValues);
+
+slider1Value.oninput = function (e) {
+  slider1.noUiSlider.set(Number(e.target.value));
+  changeInputSize(e.target);
+};
+
+slider2Value.oninput = function (e) {
+  slider2.noUiSlider.set(Number(e.target.value.split('.').join('')));
+  changeInputSize(e.target);
+};
+
+slider3Value.oninput = function (e) {
+  slider3.noUiSlider.set(Number(e.target.value.split('.').join('')));
+  changeInputSize(e.target);
+};
+
+function changeInputSize (input) {
+  input.size = input.value.length - 1 || 1;
+}

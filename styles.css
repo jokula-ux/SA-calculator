@@ -188,6 +188,12 @@ body {
   line-height: 170%;
   color: #B85B24;
 }
+input.form__elem__output {
+  border: none;
+  outline: none;
+  text-align: right;
+  max-width: 150px;
+}
 .form__elem__output.currency {
   margin-left: 6px;
 }
@@ -425,7 +431,7 @@ body {
 }
 @media only screen and (min-width: 665px) {
   .hide.form.step-1 .total__result-info {
-    grid-template-rows: repeat(2, 103px);
+    grid-template-rows: repeat(1, 103px);
   }
   .footer__cta-message {
     min-height: 86px;
@@ -450,7 +456,7 @@ body {
   .form__elem {
     margin-bottom: 41px;
   }
-  .form__elem__label {
+  .form__elem__label:not([for=company]) {
     max-width: 152px;
     width: 100%;
     font-size: 15px;
@@ -467,10 +473,9 @@ body {
     margin-top: 15px;
   }
   .total__result-info {
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(3, 71px);
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(1, 71px);
     column-gap: 16px;
-    row-gap: 7px;
   }
   .total__result-info__number {
     padding: 0;
@@ -541,13 +546,18 @@ body {
   }
 }
 @media only screen and (max-width: 525px) {
+  .total__result-info {
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(3, 71px);
+    row-gap: 7px;
+  }
   .total__result-info__title {
     font-size: 11px;
   }
   .form__elem {
     justify-content: flex-start;
   }
-  .form__elem__label {
+  .form__elem__label:not([for=company]) {
     max-width: none;
   }
 }
@@ -561,20 +571,28 @@ body {
   background-color: #EEECE7;
 }
 .info-block {
-  margin-left: 52px;
-  margin-top: 59px;
+  margin-left: 72px;
+  margin-top: 47px;
   min-width: 520px;
 }
 .info-block__logo {
   width: 56px;
   height: 56px;
-  margin-bottom: 47px;
+  margin-bottom: 41px;
+}
+.info-block__url {
+  font-family: Circular Std;
+  font-size: 16px;
+  line-height: 168%;
+  font-weight: 700;
+  color: #B85B24;
+  margin-bottom: 16px;
 }
 .info-block__title {
   font-family: Blacker Display;
   font-style: normal;
   font-weight: 500;
-  font-size: 55px;
+  font-size: 53px;
   line-height: 125.5%;
   color: #0C120C;
   max-width: 547px;
@@ -587,7 +605,7 @@ body {
   font-size: 16px;
   line-height: 170%;
   color: #0C120C;
-  margin-bottom: 40px;
+  margin-bottom: 28px;
 }
 .info-block__result-info {
   border: 1px solid #CED0CE;
