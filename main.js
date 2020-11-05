@@ -168,7 +168,7 @@ noUiSlider.create(slider2, {
   connect: [true, false],
   range: {
     min: 0,
-    max: 70000000
+    max: 80000000
   }
 });
 var slider2ValueMask = IMask(slider2Value, {
@@ -177,7 +177,7 @@ var slider2ValueMask = IMask(slider2Value, {
   signed: true,
   thousandsSeparator: '.',
   min: 0,
-  max: 70000000
+  max: 80000000
 });
 noUiSlider.create(slider3, {
   start: 22350,
