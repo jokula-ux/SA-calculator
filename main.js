@@ -242,5 +242,5 @@ slider3Value.oninput = function (e) {
 };
 
 function changeInputSize (input) {
-  input.size = input.value.length - 1 || 1;
+  input.size = input.value.length;
 }
