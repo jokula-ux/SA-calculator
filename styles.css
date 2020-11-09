@@ -365,7 +365,7 @@ input.form__elem__output {
   border: 1px solid #EEECE7;
   box-sizing: border-box;
   width: 181px;
-  justify-content: space-around;
+  justify-content: flex-end;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -385,8 +385,6 @@ input.form__elem__output {
 .footer__download-images__block a {
   display: flex;
   flex-direction: column;
-  height: 100%;
-  justify-content: flex-end;
   font-family: Circular Std;
   font-style: normal;
   font-weight: 500;
