@@ -2,48 +2,73 @@
 var container1 = document.getElementById('image-wrap-1');
 var container2 = document.getElementById('image-wrap-2');
 var container3 = document.getElementById('image-wrap-3');
-// var container4 = document.getElementById('image-wrap-4');
-// var container5 = document.getElementById('image-wrap-5');
-// var container6 = document.getElementById('image-wrap-6');
 var canvasContainer = document.querySelector('.footer__download-images');
-var downloadImagesButton = document.querySelector('.footer__cta-message');
-
-var zip = new JSZip();
 
 function getCanvas() {
-  downloadImagesButton.removeEventListener('click', downloadPackage);
-  zip = new JSZip();
-  async function fillArchive() {
-    await html2canvas(container1, {allowTaint: true}).then(function(canvas) {
-      zip.file("Faedingar.png", canvas.toDataURL().split('base64,')[1], {base64: true});
-    });
-    await html2canvas(container2, {allowTaint: true}).then(function(canvas) {
-      downloadImagesButton.querySelectorAll('canvas').forEach(item => item.parentNode.removeChild(item));
-      document.querySelector('.footer__cta-message').appendChild(canvas);
-      zip.file("Leikskolaplass.png", canvas.toDataURL().split('base64,')[1], {base64: true});
-    });
-    await html2canvas(container3, {allowTaint: true}).then(function(canvas) {
-      zip.file("Hjukrunarrymi.png", canvas.toDataURL().split('base64,')[1], {base64: true});
-    });
-    // await html2canvas(container4, {allowTaint: true}).then(function(canvas) {
-    //   zip.file("Hjukrunarfraedingar.png", canvas.toDataURL().split('base64,')[1], {base64: true});
-    // });
-    // await html2canvas(container5, {allowTaint: true}).then(function(canvas) {
-    //   zip.file("Grunnskolakennarar.png", canvas.toDataURL().split('base64,')[1], {base64: true});
-    // });
-    // await html2canvas(container6, {allowTaint: true}).then(function(canvas) {
-    //   zip.file("Logregluthjonar.png", canvas.toDataURL().split('base64,')[1], {base64: true});
-    // });
-  }
-  fillArchive()
-    .then(() => downloadImagesButton.addEventListener('click', downloadPackage));
-};
-
-function downloadPackage() {
-  zip.generateAsync({type:"blob"})
-  .then(function(content) {
-    saveAs(content, "Hlaðið_niður_skrám.zip");
+  canvasContainer.childNodes.forEach(child => child.innerHTML = '');
+  html2canvas(container1, {allowTaint: true}).then(function(canvas) { 
+    var link = document.createElement("a");
+    var downloadTextContainer = document.createElement("div");
+    var title = document.createElement("p");
+    title.classList.add("download-image__title");
+    title.innerText = "Fæðingar";
+    downloadTextContainer.classList.add("download-image__text-container");
+    var downloadText = document.createElement("p");
+    var downloadIcon = new Image();
+    downloadIcon.src = "./images/download-icon.svg";
+    downloadText.innerHTML = "Sækja mynd";
+    downloadTextContainer.appendChild(downloadText);
+    downloadTextContainer.appendChild(downloadIcon);
+    link.appendChild(title);
+    link.appendChild(canvas);
+    link.appendChild(downloadTextContainer);
+    document.getElementById("download-image-1").appendChild(link);
+    link.download = "Faedingar.png";
+    link.href = canvas.toDataURL("image/png");
+    link.target = "_blank";
   });
+  html2canvas(container2, {allowTaint: true}).then(function(canvas) {
+    var link = document.createElement("a");
+    var downloadTextContainer = document.createElement("div");
+    var title = document.createElement("p");
+    title.classList.add("download-image__title");
+    title.innerText = "Leikskólapláss";
+    downloadTextContainer.classList.add("download-image__text-container");
+    var downloadText = document.createElement("p");
+    var downloadIcon = new Image();
+    downloadIcon.src = "./images/download-icon.svg";
+    downloadText.innerHTML = "Sækja mynd";
+    downloadTextContainer.appendChild(downloadText);
+    downloadTextContainer.appendChild(downloadIcon);
+    link.appendChild(title);
+    link.appendChild(canvas);
+    link.appendChild(downloadTextContainer);
+    document.getElementById("download-image-2").appendChild(link);
+    link.download = "Leikskolaplass.png";
+    link.href = canvas.toDataURL("image/png");
+    link.target = "_blank";
+  });
+  html2canvas(container3, {allowTaint: true}).then(function(canvas) {
+    var link = document.createElement("a");
+    var downloadTextContainer = document.createElement("div");
+    var title = document.createElement("p");
+    title.classList.add("download-image__title");
+    title.innerText = "Dvalar- og hjúkrunarými";
+    downloadTextContainer.classList.add("download-image__text-container");
+    var downloadText = document.createElement("p");
+    var downloadIcon = new Image();
+    downloadIcon.src = "./images/download-icon.svg";
+    downloadText.innerHTML = "Sækja mynd";
+    downloadTextContainer.appendChild(downloadText);
+    downloadTextContainer.appendChild(downloadIcon);
+    link.appendChild(title);
+    link.appendChild(canvas);
+    link.appendChild(downloadTextContainer);
+    document.getElementById("download-image-3").appendChild(link);
+    link.download = "hjukrunarrymi.png";
+    link.href = canvas.toDataURL("image/png");
+    link.target = "_blank";
+  })
 };
 
 // Functionality for steps
@@ -103,9 +128,6 @@ var lockedSlider = false;
 var costNumberOfBirths = 307416;
 var costBabyInKindergardenYear = 2289258;
 var costNursHomeSpaces = 13168558;
-//var costNurses = 12923192;
-//var costTeachers = 9339406;
-//var costPoliceOfficers = 12427622;
 
 var slider1 = document.getElementById('employees');
 var slider2 = document.getElementById('salaries');
@@ -132,16 +154,10 @@ function updateTotalValues() {
   var totalNumberOfBirths = totalTaxes / costNumberOfBirths;
   var totalKindergarden = totalTaxes / costBabyInKindergardenYear;
   var totalNursHomeSpaces = totalTaxes / costNursHomeSpaces;
-  //var totalNurses = totalTaxes / costNurses;
-  //var totalTeachers = totalTaxes / costTeachers;
-  //var totalPoliceOfficers = totalTaxes / costPoliceOfficers;
 
   document.querySelectorAll('#totalNumberOfBirths').forEach(elem => elem.innerHTML = (Math.floor(Math.floor(totalNumberOfBirths * 10) / 10)).toLocaleString('de-DE'));
   document.querySelectorAll('#totalKindergarden').forEach(elem => elem.innerHTML = (Math.floor(Math.floor(totalKindergarden * 10) / 10)).toLocaleString('de-DE'));
   document.querySelectorAll('#totalNursHomeSpaces').forEach(elem => elem.innerHTML = (Math.floor(Math.floor(totalNursHomeSpaces * 10) / 10)).toLocaleString('de-DE'));
-  //document.querySelectorAll('#totalNurses').forEach(elem => elem.innerHTML = (Math.floor(totalNurses * 10) / 10).toLocaleString('de-DE'));
-  //document.querySelectorAll('#totalTeachers').forEach(elem => elem.innerHTML = (Math.floor(totalTeachers * 10) / 10).toLocaleString('de-DE'));
-  //document.querySelectorAll('#totalPoliceOfficers').forEach(elem => elem.innerHTML = (Math.floor(totalPoliceOfficers * 10) / 10).toLocaleString('de-DE'));
 }
 
 noUiSlider.create(slider1, {
@@ -200,21 +216,18 @@ var slider3ValueMask = IMask(slider3Value, {
 
 slider1.noUiSlider.on('update', function (values, handle) {
   slider1Value.value = Math.trunc(values[handle]);
-  changeInputSize(slider1Value);
   slider1ValueMask.updateValue();
 });
 
 slider2.noUiSlider.on('update', function (values, handle) {
   slider2ValueCount = Number(values[handle]);
   slider2Value.value = Number(values[handle]).toLocaleString('de-DE');
-  changeInputSize(slider2Value);
   slider2ValueMask.updateValue();
 });
 
 slider3.noUiSlider.on('update', function (values, handle) {
   slider3ValueCount = Number(values[handle]);
   slider3Value.value = Number(values[handle]).toLocaleString('de-DE');
-  changeInputSize(slider3Value);
   slider3ValueMask.updateValue();
 });
 
@@ -228,19 +241,12 @@ slider3.noUiSlider.on('update', updateTotalValues);
 
 slider1Value.oninput = function (e) {
   slider1.noUiSlider.set(Number(e.target.value));
-  changeInputSize(e.target);
 };
 
 slider2Value.oninput = function (e) {
   slider2.noUiSlider.set(Number(e.target.value.split('.').join('')));
-  changeInputSize(e.target);
 };
 
 slider3Value.oninput = function (e) {
   slider3.noUiSlider.set(Number(e.target.value.split('.').join('')));
-  changeInputSize(e.target);
 };
-
-function changeInputSize (input) {
-  input.size = input.value.length;
-}
