@@ -71,6 +71,12 @@ function getCanvas() {
   })
 };
 
+document.querySelectorAll("#editOutput").forEach(item => {
+  item.addEventListener("click", (e) => {
+    e.currentTarget.parentNode.querySelector("input").select();
+  })
+})
+
 // Functionality for steps
 var step1Elements = document.getElementsByClassName('step-1');
 var step2Elements = document.getElementsByClassName('step-2');
