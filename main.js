@@ -53,7 +53,7 @@ function getCanvas() {
     var downloadTextContainer = document.createElement("div");
     var title = document.createElement("p");
     title.classList.add("download-image__title");
-    title.innerText = "Dvalar- og hjúkrunarými";
+    title.innerText = "Dvalar- og hjúkrunarrými";
     downloadTextContainer.classList.add("download-image__text-container");
     var downloadText = document.createElement("p");
     var downloadIcon = new Image();
