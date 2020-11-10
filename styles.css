@@ -451,6 +451,9 @@ input.form__elem__output {
   .footer__cta-message {
     min-height: 86px;
   }
+  .form__elem__label {
+    flex-basis: calc(100% - 255px);
+  }
 }
 @media only screen and (max-width: 664px) {
   .calculator-wrapper {
