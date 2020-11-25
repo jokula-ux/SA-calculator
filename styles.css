@@ -191,7 +191,7 @@ body {
 .form__elem__output-wrapper {
   height: 41px;
   margin-bottom: 22px;
-  flex-basis: 246px;
+  flex-basis: 260px;
   display: flex;
   align-items: center;
   justify-content: flex-end;
@@ -452,7 +452,7 @@ input.form__elem__output {
     min-height: 86px;
   }
   .form__elem__label {
-    flex-basis: calc(100% - 255px);
+    flex-basis: calc(100% - 262px);
   }
 }
 @media only screen and (max-width: 664px) {
@@ -568,7 +568,7 @@ input.form__elem__output {
 .mail-wrapper {
   display: flex;
   position: absolute;
-  left: -9999;
+  left: -9999px;
   top: 0;
   width: 1200px;
   height: 630px;

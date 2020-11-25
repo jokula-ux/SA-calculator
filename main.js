@@ -8,6 +8,7 @@ function getCanvas() {
   canvasContainer.childNodes.forEach(child => child.innerHTML = '');
   html2canvas(container1, {allowTaint: true}).then(function(canvas) { 
     var link = document.createElement("a");
+    link.setAttribute("id", "calculator-download-image")
     var downloadTextContainer = document.createElement("div");
     var title = document.createElement("p");
     title.classList.add("download-image__title");
@@ -29,6 +30,7 @@ function getCanvas() {
   });
   html2canvas(container2, {allowTaint: true}).then(function(canvas) {
     var link = document.createElement("a");
+    link.setAttribute("id", "calculator-download-image")
     var downloadTextContainer = document.createElement("div");
     var title = document.createElement("p");
     title.classList.add("download-image__title");
@@ -50,6 +52,7 @@ function getCanvas() {
   });
   html2canvas(container3, {allowTaint: true}).then(function(canvas) {
     var link = document.createElement("a");
+    link.setAttribute("id", "calculator-download-image")
     var downloadTextContainer = document.createElement("div");
     var title = document.createElement("p");
     title.classList.add("download-image__title");
