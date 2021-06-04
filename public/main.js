@@ -134,9 +134,9 @@ function changeStep(stepIndicatorValue) {
 var lockedState = true;
 var lockedSlider = false;
 
-var costNumberOfBirths = 307416;
-var costBabyInKindergardenYear = 2289258;
-var costNursHomeSpaces = 13168558;
+var costNumberOfBirths = 324205;
+var costBabyInKindergardenYear = 2600000;
+var costNursHomeSpaces = 13200000;
 
 var slider1 = document.getElementById('employees');
 var slider2 = document.getElementById('salaries');
